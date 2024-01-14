@@ -1,0 +1,18 @@
+{
+    "pages": {
+        "teste": {
+            "api": {
+                "url": "http://127.0.0.1:5000/api/index",
+                "method": "GET"
+            },
+            "render_interval": 5
+        },
+        "blog": {
+            "api": {
+                "url": "http://127.0.0.1:5000/api/blog",
+                "method": "GET"
+            },
+            "render_interval": 1
+        }
+    }
+}
