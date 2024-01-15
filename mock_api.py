@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 page_data = {
     "index": {
-        "title": "Index API",
+        "title": "Index API 2",
         "description": "This is a test page.",
         "keywords": "test, page, website"
     },
