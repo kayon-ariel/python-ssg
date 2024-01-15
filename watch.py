@@ -27,20 +27,23 @@ def fetch_data_from_api(api_config):
 
 def render_page(page_name, page_info):
     while True:
-        api_config = page_info.get('api', {})
-        page_variables = page_info.get('variables', {})
-        render_interval = page_info.get('render_interval', 60)
+        try:
+            api_config = page_info.get('api', {})
+            page_variables = page_info.get('variables', {})
+            render_interval = page_info.get('render_interval', 60)
 
-        api_data = fetch_data_from_api(api_config)
+            api_data = fetch_data_from_api(api_config)
 
-        combined_variables = {**api_data, **page_variables}
+            combined_variables = {**api_data, **page_variables}
 
-        renderer = SiteRenderer()
-        renderer.render_site(page_name, combined_variables)
+            renderer = SiteRenderer()
+            renderer.render_site(page_name, combined_variables)
 
-        print(
-            f"Waiting for {render_interval} seconds before the next render of {page_name}...")
-        time.sleep(render_interval)
+            print(
+                f"Waiting for {render_interval} seconds before the next render of {page_name}...")
+            time.sleep(render_interval)
+        except Exception as e:
+            print(f"Error rendering {page_name}: {e}")
 
 
 if __name__ == "__main__":
