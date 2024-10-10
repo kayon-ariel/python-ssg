@@ -1,51 +1,135 @@
+## Python-SSR: Server-Side Rendering with Python
 
-# Python Server Side Rendering
+A library for rendering HTML pages on the server, allowing dynamic content generation from APIs.
 
-Gerando páginas estáticas atualizadas dinamicamente com python.
+![Python Version](https://img.shields.io/badge/python-%3E%3D3.11.4-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue)
 
-Esse projeto é apenas um passatempo feito em poucas horas, não deve ser interpretado como algo para produção.
-Ficarei feliz em receber sugestões ou implementações de melhorias!
-## Rodando localmente
+## Table of Contents
 
-Clone o projeto
+- [What is SSR](#what-is-ssr)
+- [Use Cases](#use-cases)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Example Structure for Usage](#example-structure-for-usage)
+- [Example of HTML](#example-of-indexhtml)
+- [Contribution](#contribution)
+- [Running Tests](#running-tests)
+
+## What is SSR
+
+**Server-Side Rendering (SSR)** is a technique where the content of the application is generated on the server and sent to the client as complete HTML. This provides better initial performance and allows search engines to index content more effectively, improving SEO optimization. With SSR, applications offer a faster and smoother user experience, especially on mobile devices, making content delivery more efficient and accessible.
+
+### Use Cases
+
+Python-SSR is ideal for those who need to generate static pages that dynamically update with data from APIs. Here are some use cases:
+
+- **Personal Blogs**: Dynamically update the main and post pages with the latest content at defined intervals.
+- **Report Pages**: Generate pages with report data that automatically update, using APIs that provide statistics or charts.
+- **Dynamic Landing Pages**: Create landing pages that update as the API receives new data, such as promotions or product updates.
+
+## Installation
+
+To install the library, you can use the following command:
 
 ```bash
-  git clone https://github.com/kayon-ariel/Python-SSR.git
+pip install python-ssr
 ```
 
-Inicie o servidor de mock (Somente se for rodar para testes, sem ter alterado o config.json)
+## Usage
 
-```bash
-  python mock_api.py
+1. **Create a configuration file (`config.json`)**:
+
+   The file should contain the following structure:
+
+   ```json
+   {
+     "pages": {
+         "index": {
+             "api": {
+                 "url": "http://127.0.0.1:5000/api/index",
+                 "method": "GET"
+             },
+             "render_interval": 5
+         }
+     }
+   }
+   ```
+
+Each page corresponds to an HTML template file in `/html/`, and the result is rendered in `/dist/`. The defined API returns JSON, which is used to populate the template. This JSON can come from local APIs, as in the example, or any external API you wish to use.
+
+2. **Start Rendering**:
+
+   To start rendering, you should call the `start_rendering` function and pass the path of your configuration file.
+
+   ```python
+   from python_ssr import start_rendering
+
+   if __name__ == "__main__":
+       start_rendering('config.json')
+   ```
+
+## Example Structure for Usage
+
+Here’s an example directory structure for using the library:
+
+```
+your_project/
+├── config.json
+│
+├── html/
+│   ├── assets/
+│   │   └── (Your folders and files)
+│   │
+│   ├── index.html
+│   └── (Your HTML files)
+│
+├── dist/
+│   └── (rendered HTML files)
+│
+└── main.py
 ```
 
-Em outro terminal rode o gerador de páginas
+### Example of `index.html`
 
-```bash
-  python watch.py
-```
-## Declaração das páginas: config.json
+An example HTML file that uses variables for rendering:
 
-```javascript
-{
-    "pages": {
-        "index": {
-            "api": {
-                "url": "http://127.0.0.1:5000/api/index",
-                "method": "GET"
-            },
-            "render_interval": 5
-        },
-        "blog": {
-            "api": {
-                "url": "http://127.0.0.1:5000/api/blog",
-                "method": "GET"
-            },
-            "render_interval": 1
-        }
-    }
-}
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+    <script src="assets/script.js"></script>
+</body>
+</html>
 ```
-- As chaves de ```pages``` como index ou blog, devem coresponder ao nome de um arquivo de template dentro de html, por exemplo /html/blog.html que irá gerar ```/dist/blog.html```.
-- O json retornado pela API definida no json em pages->blog->api será passado como parâmetro para montar o template.
-- O render_interval define de quanto em quanto tempo a página será regenerada, com um novo consumo de API.
+
+## Contribution
+
+Feel free to explore, open issues, suggest pull requests, or just enjoy learning from the code!
+
+### Future Implementations: Integration with AWS S3
+
+A planned future improvement for the project is the possibility of integrating Python-SSR with AWS S3. This will allow the generated static pages to be automatically uploaded to a bucket on S3, keeping the site online and always updated with the latest content without the need to manage servers.
+
+It’s not implemented yet, but it would be extremely useful for those looking to automate the update of static pages hosted in the cloud, keeping everything synchronized with real-time APIs.
+
+## Running Tests
+
+To ensure that all the library's functionalities are working correctly, it's important to run the tests. You can do this using Python’s `unittest` module.
+
+Follow the steps below to run the tests:
+
+1. Navigate to the root directory of your project.
+
+2. Execute the following command:
+
+   ```bash
+   python -m unittest discover -s tests -p "*.py"
+   ```
