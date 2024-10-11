@@ -1,17 +1,17 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="python-ssr",
-    version="0.0.4",
-    description="A Python SSR library for dynamically rendering static websites",
-    keywords='python ssr, ssr, server side rendering, server-side-rendering',
+    name="python-ssg",
+    version="0.0.1",
+    description="A Python SSG library for dynamically generating static websites",
+    keywords='python ssg, static site generation, dynamic static sites',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url="https://github.com/kayon-ariel/Python-SSR",
+    url="https://github.com/kayon-ariel/python-ssg",
     project_urls={
-        "Homepage": "https://github.com/kayon-ariel/Python-SSR",
-        "Repository": "https://github.com/kayon-ariel/Python-SSR.git",
-        "Issues": "https://github.com/kayon-ariel/Python-SSR/issues",
+        "Homepage": "https://github.com/kayon-ariel/python-ssg",
+        "Repository": "https://github.com/kayon-ariel/python-ssg.git",
+        "Issues": "https://github.com/kayon-ariel/python-ssg/issues",
     },
     author="Kayon Ariel",
     author_email="kayonariel@gmail.com",
@@ -24,7 +24,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'python_ssr=python_ssr.watch:start_rendering',
+            'python_ssg=python_ssg.watch:start_rendering',
         ],
     },
     classifiers=[

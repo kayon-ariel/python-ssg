@@ -1,12 +1,12 @@
-from python_ssr.site_renderer import SiteRenderer
+from python_ssg.site_renderer import SiteRenderer
 from unittest.mock import patch, MagicMock
 import unittest
 
 
 class TestSiteRenderer(unittest.TestCase):
 
-    @patch('python_ssr.site_renderer.Storage.save_html')
-    @patch('python_ssr.site_renderer.Environment.get_template')
+    @patch('python_ssg.site_renderer.Storage.save_html')
+    @patch('python_ssg.site_renderer.Environment.get_template')
     def test_render_site(self, mock_get_template, mock_save_html):
         # Arrange
         renderer = SiteRenderer()

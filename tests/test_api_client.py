@@ -1,11 +1,11 @@
-from python_ssr.api_client import APIClient
+from python_ssg.api_client import APIClient
 from unittest.mock import patch
 import unittest
 
 
 class TestAPIClient(unittest.TestCase):
 
-    @patch('python_ssr.api_client.requests.request')  # Correct patch path
+    @patch('python_ssg.api_client.requests.request')  # Correct patch path
     def test_fetch_data_success(self, mock_request):
         # Arrange
         mock_request.return_value.status_code = 200
@@ -22,7 +22,7 @@ class TestAPIClient(unittest.TestCase):
         # Assert
         self.assertEqual(data, {'key': 'value'})
 
-    @patch('python_ssr.api_client.requests.request')  # Correct patch path
+    @patch('python_ssg.api_client.requests.request')  # Correct patch path
     def test_fetch_data_failure(self, mock_request):
         # Arrange
         mock_request.return_value.status_code = 404
