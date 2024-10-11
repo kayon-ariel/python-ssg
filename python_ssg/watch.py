@@ -1,6 +1,6 @@
-from python_ssr.site_renderer import SiteRenderer
-from python_ssr.api_client import APIClient
-from python_ssr.storage import Storage
+from python_ssg.site_renderer import SiteRenderer
+from python_ssg.api_client import APIClient
+from python_ssg.storage import Storage
 import multiprocessing
 import time
 import json

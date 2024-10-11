@@ -1,5 +1,5 @@
 from jinja2 import Environment, FileSystemLoader
-from python_ssr.storage import Storage
+from python_ssg.storage import Storage
 
 
 class SiteRenderer:

@@ -1,4 +1,4 @@
-from python_ssr.storage import Storage
+from python_ssg.storage import Storage
 import unittest
 import shutil
 import os
