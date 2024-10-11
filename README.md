@@ -2,7 +2,12 @@
 
 A library for rendering HTML pages on the server, allowing dynamic content generation from APIs.
 
-![Python Version](https://img.shields.io/badge/python-%3E%3D3.11.4-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue)
+![Python Version](https://img.shields.io/badge/python-%3E%3D3.6-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
+[![PyPI Latest Release](https://img.shields.io/pypi/v/python-ssr.svg)](https://pypi.org/project/python-ssr/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/python-ssr.svg?label=PyPI%20downloads)](https://pypi.org/project/python-ssr/)
+
 
 ## Table of Contents
 
@@ -65,28 +70,24 @@ Each page corresponds to an HTML template file in `/html/`, and the result is re
    from python_ssr import start_rendering
 
    if __name__ == "__main__":
-       start_rendering('config.json')
+       start_rendering("config.json")
    ```
 
 ## Example Structure for Usage
 
-Here’s an example directory structure for using the library:
+Here is an example directory structure for using the library:
 
 ```
 your_project/
-├── config.json
-│
-├── html/
-│   ├── assets/
-│   │   └── (Your folders and files)
-│   │
-│   ├── index.html
-│   └── (Your HTML files)
-│
-├── dist/
-│   └── (rendered HTML files)
-│
-└── main.py
+  - config.json
+  - html/
+    - assets/
+      - (Your folders and files)
+    - index.html
+    - (Your HTML files)
+  - dist/
+    - (rendered HTML files)
+  - main.py
 ```
 
 ### Example of `index.html`
@@ -122,7 +123,7 @@ It’s not implemented yet, but it would be extremely useful for those looking t
 
 ## Running Tests
 
-To ensure that all the library's functionalities are working correctly, it's important to run the tests. You can do this using Python’s `unittest` module.
+To ensure that all library features are working correctly, it is important to run tests. You can do this using Python `unittest` module.
 
 Follow the steps below to run the tests:
 
